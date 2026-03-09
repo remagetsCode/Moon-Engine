@@ -30,4 +30,6 @@ import moon.game.events.sounds.*;
 import moon.hardcoded_shaders.*;
 import moon.toolkit.ui.*;
 import moon.global_obj.*;
+
+import nz.script.*;
 #end

@@ -24,7 +24,7 @@ class Character extends MoonSprite
     public var conductor:Conductor;
     public var character(default, set):String;
     public var animationHold:Float = 0;
-    public var script:MoonScript;
+    public var script:Dynamic;
     public var danceFrequency:Int = 2;
 
     public var camOffsets:Array<Float> = [];
@@ -41,8 +41,6 @@ class Character extends MoonSprite
     {
         super(x, y);
         this.conductor = conductor;
-
-        script = new MoonScript();
 
         this.character = character;
 
@@ -74,6 +72,7 @@ class Character extends MoonSprite
         {
             lastDanceBeat = beatInt;
             this.dance(true);
+            script.onDance();
         }
     }
        
@@ -84,7 +83,9 @@ class Character extends MoonSprite
             dance(true);
             animationHold = 0;
         }
+
         super.update(elapsed);
+        script.onUpdate();
     }
 
     override public function playAnim(animName:String, force:Bool = false, reversed:Bool = false, frame:Int = 0)
@@ -123,12 +124,8 @@ class Character extends MoonSprite
         this.updateHitbox();
         this.playAnim("idle-0");
 
-        script.load('characters/${this.character}/script.hx');
-        if(script.code != null)
-        {
-            script.set('char', this);
-            Global.registerScript('script-${this.character}', script);
-        }
+        var interp = new MoonScript('characters/${this.character}/script');
+        script = NxProxy.instantiate(interp, "Character", [char]);
 
         /*animation.onFinish.add((anim)->
         {
