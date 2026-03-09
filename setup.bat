@@ -34,7 +34,6 @@ haxelib install hxp
 
 haxelib install moonchart 0.5.1
 haxelib install hxvlc 2.2.5
-haxelib install hscript-iris
 haxelib install flixel-waveform
 haxelib install flixel-animate 1.1.0 
 haxelib install hxdiscord_rpc
@@ -47,6 +46,7 @@ haxelib git polymod https://github.com/larsiusprime/polymod
 haxelib git thx.core https://github.com/fponticelli/thx.core
 haxelib git thx.semver https://github.com/fponticelli/thx.semver
 haxelib git flixel-screenshot-plugin https://github.com/dotevie/flixel-screenshot-plugin
+haxelib git nxscript https://github.com/senioritaelizabeth/NxScript
 
 haxelib set flixel 6.1.2
 haxelib set lime 8.3.1
